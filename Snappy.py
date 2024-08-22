@@ -11,6 +11,7 @@ key_groups = [
 current_key = None
 
 def get_active_group(key):
+    key = key.lower()  # Normalize the key to lowercase
     for group in key_groups:
         if key in group:
             return group
@@ -19,9 +20,11 @@ def get_active_group(key):
 def on_key_event(event):
     global current_key
 
+    # Normalize the key to lowercase
+    new_key = event.name.lower()
+
     if event.event_type == keyboard.KEY_DOWN:
-        if event.name in {'a', 'd', 'w', 's'}:
-            new_key = event.name
+        if new_key in {'a', 'd', 'w', 's'}:
             new_group = get_active_group(new_key)
 
             if new_group:
@@ -42,7 +45,7 @@ def on_key_event(event):
                     current_key = None
 
     elif event.event_type == keyboard.KEY_UP:
-        if event.name == current_key:
+        if event.name.lower() == current_key:
             keyboard.release(current_key)
             current_key = None
 
