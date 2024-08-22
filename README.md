@@ -4,5 +4,5 @@ How to get it working:
 
 get python (i use 3.11 version)
 go to command prompt (windows one) and type this in pip install keyboard
-download the file and open it
+download "Snappy.py" file and open it
 BOOM and done
